@@ -1,4 +1,4 @@
-# ICKT2027
+# The 3rd symposium on Information, Communication, and Knowledge Technologies (ICKT 2027)
 
 ## 実施概要
 
