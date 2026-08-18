@@ -26,8 +26,7 @@
 準備中です。
 
 ## お問い合わせ
-
-準備中です。
+<ickt2027-org@googlegroups.com>
 
 ## 過去
 
