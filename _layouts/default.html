@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ site.description }}">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="site-logo">
+        <a href="/"><span class="logo-en">ICKT</span><span class="logo-year">2027</span></a>
+      </div>
+      <nav class="global-nav">
+        <ul>
+          <li><a href="#about"><span class="nav-ja">概要</span><span class="nav-en">ABOUT</span></a></li>
+          <li><a href="#program"><span class="nav-ja">プログラム</span><span class="nav-en">PROGRAM</span></a></li>
+          <li><a href="#fee"><span class="nav-ja">参加費</span><span class="nav-en">FEE</span></a></li>
+          <li><a href="#accommodation"><span class="nav-ja">宿泊</span><span class="nav-en">STAY</span></a></li>
+          <li><a href="#registration"><span class="nav-ja">申し込み</span><span class="nav-en">REGISTER</span></a></li>
+          <li><a href="#contact"><span class="nav-ja">お問い合わせ</span><span class="nav-en">CONTACT</span></a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav>
+      <ul>
+        <li><a href="#about" class="mobile-menu-link">概要 <small>ABOUT</small></a></li>
+        <li><a href="#program" class="mobile-menu-link">プログラム <small>PROGRAM</small></a></li>
+        <li><a href="#fee" class="mobile-menu-link">参加費 <small>FEE</small></a></li>
+        <li><a href="#accommodation" class="mobile-menu-link">宿泊 <small>STAY</small></a></li>
+        <li><a href="#registration" class="mobile-menu-link">申し込み <small>REGISTER</small></a></li>
+        <li><a href="#contact" class="mobile-menu-link">お問い合わせ <small>CONTACT</small></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <section class="hero" id="top">
+    <div class="hero-slides">
+      <div class="hero-slide slide-1"></div>
+      <div class="hero-slide slide-2"></div>
+      <div class="hero-slide slide-3"></div>
+      <div class="hero-slide slide-4"></div>
+      <div class="hero-slide slide-5"></div>
+      <div class="hero-slide slide-6"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-conf-name">The 3rd Symposium on Information, Communication, and Knowledge Technologies</p>
+      <h1 class="hero-title"><span class="hero-title-main">ICKT 2027</span></h1>
+      <p class="hero-subtitle-ja">情報・通信・知識技術シンポジウム</p>
+      <div class="hero-meta">
+        <span class="hero-date">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          2027年2月21日（日）〜 22日（月）
+        </span>
+        <span class="hero-venue">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          淡路夢舞台 会議室 301
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="content-wrapper">
+      {{ content }}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-en">ICKT</span><span class="logo-year">2027</span>
+      </div>
+      <p class="footer-description">The 3rd Symposium on Information, Communication, and Knowledge Technologies</p>
+      <div class="footer-links">
+        <a href="https://ickt2024.github.io" target="_blank">ICKT 2024</a>
+        <a href="https://www.yumebutai.co.jp" target="_blank">淡路夢舞台</a>
+      </div>
+      <p class="footer-copy">&copy; 2027 ICKT2027実行委員会</p>
+    </div>
+  </footer>
+
+  <script>
+    // ヘッダー: スクロールで背景切り替え
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ハンバーガーメニュー
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+    document.querySelectorAll('.mobile-menu-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    // スムーズスクロール（ナビ高さ分オフセット）
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
