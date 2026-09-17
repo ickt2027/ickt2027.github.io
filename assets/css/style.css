@@ -198,6 +198,10 @@ body.menu-open { overflow: hidden; }
 .slide-4 { background-image: url('/assets/images/hero_05_osaka_bay.jpg');       animation-delay: 18s; }
 .slide-5 { background-image: url('/assets/images/hero_06_yama_corridor.jpg');   animation-delay: 24s; }
 .slide-6 { background-image: url('/assets/images/hero_19_ellipse_forum.jpg');   animation-delay: 30s; }
+.slide-7 { background-image: url('/assets/images/image7.jpg');   animation-delay: 36s; }
+.slide-8 { background-image: url('/assets/images/image8.jpg');   animation-delay: 42s; }
+.slide-9 { background-image: url('/assets/images/image9.jpg');   animation-delay: 48s; }
+
 
 @keyframes slideShow {
   0%   { opacity: 0; transform: scale(1.03); }
@@ -405,7 +409,252 @@ body.menu-open { overflow: hidden; }
   padding-right: 1.5rem;
 }
 
-/* ---------- フッター ---------- */
+/* 基調講演者 */
+.speaker-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+}
+.speaker-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--sky);
+  box-shadow: 0 4px 16px rgba(10, 37, 64, 0.08);
+}
+.speaker-info {
+  flex: 1;
+}
+.speaker-role {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ocean-light);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+.speaker-name {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ocean-deep);
+  margin-bottom: 0.25rem;
+}
+.speaker-affiliation {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  margin-bottom: 0.5rem;
+}
+.speaker-topic {
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+.speaker-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--ocean-mid);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  background: var(--sky);
+  border-bottom: none !important;
+  transition: all var(--transition);
+  margin-top: 0.4rem;
+}
+.speaker-more:hover {
+  background: var(--ocean-pale);
+  color: var(--ocean-deep);
+  transform: translateX(3px);
+}
+
+@media (max-width: 600px) {
+  .speaker-card { flex-direction: column; text-align: center; gap: 1.2rem; }
+}
+
+/* ---------- 基調講演ページ（エディトリアル・特集記事スタイル） ---------- */
+.keynote-editorial {
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+}
+
+/* 導入ヘッダー */
+.editorial-header {
+  margin-bottom: 3.5rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid var(--sky);
+}
+.editorial-badge {
+  display: inline-block;
+  font-family: var(--font-en);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--ocean-light);
+  margin-bottom: 0.5rem;
+}
+.editorial-title {
+  font-family: var(--font-serif-ja);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 600;
+  color: var(--ocean-deep);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.8rem;
+}
+.editorial-lead {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+
+/* 講演者プロフィール（2カラム構成） */
+.editorial-profile {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  margin-bottom: 4.5rem;
+}
+.editorial-fig {
+  margin: 0;
+}
+.editorial-fig .fig-main {
+  width: 100%;
+  max-height: 380px;
+  height: auto;
+  object-fit: contain;
+  background: #f8fafc;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(10, 37, 64, 0.08);
+}
+.editorial-fig figcaption {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.editorial-speaker-name {
+  font-family: var(--font-serif-ja);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--ocean-deep);
+  margin-bottom: 0.6rem;
+  padding: 0 !important;
+}
+.editorial-speaker-name::before { display: none !important; }
+.editorial-speaker-name small {
+  font-size: 0.6em;
+  font-weight: 400;
+  color: var(--text-mid);
+  margin-left: 0.2rem;
+}
+.editorial-speaker-affil {
+  font-size: 0.98rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.editorial-speaker-affil p {
+  margin-bottom: 0.2rem;
+}
+
+/* 講演題目ハイライトボックス */
+.editorial-quote-box {
+  background: #f4f8fb;
+  border-left: 3px solid var(--ocean-mid);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 6px 6px 0;
+}
+.eq-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ocean-light);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+.eq-title {
+  font-family: var(--font-serif-ja);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ocean-deep);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 各セクション */
+.editorial-section {
+  margin-bottom: 3.5rem;
+}
+.editorial-body p {
+  font-size: 0.98rem;
+  line-height: 1.95;
+}
+
+/* スナップショット（セクション間の上品な写真列） */
+.editorial-snapshots {
+  display: flex;
+  gap: 1.5rem;
+  margin: 3.5rem 0 4rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.snap-item {
+  flex: 1 1 200px;
+  max-width: 260px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+.snap-item img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  background: #f8fafc;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(10, 37, 64, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.snap-item:hover img {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.12);
+}
+
+.editorial-back {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--sky);
+}
+.back-link {
+  font-size: 0.9rem;
+  color: var(--ocean-mid);
+  font-weight: 500;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .editorial-profile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .profile-photo-column {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .editorial-snapshots {
+    gap: 1rem;
+  }
+}
+
 .site-footer { background: var(--ocean-deep); color: var(--white); }
 .footer-inner {
   max-width: 900px;

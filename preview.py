@@ -9,7 +9,7 @@ import os
 import re
 import markdown as md_lib
 
-PORT = 8001
+PORT = 8003
 SITE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def render_markdown(text):
@@ -30,16 +30,26 @@ def render_markdown(text):
     return md_lib.markdown(text, extensions=['extra', 'toc', 'tables'])
 
 
-def load_layout():
-    layout_path = os.path.join(SITE_DIR, '_layouts', 'default.html')
+def get_layout_name(text):
+    """front matter から layout 名を取得（デフォルト: default）"""
+    m = re.match(r'^---\n(.*?)---\n', text, flags=re.DOTALL)
+    if m:
+        for line in m.group(1).splitlines():
+            if line.startswith('layout:'):
+                return line.split(':', 1)[1].strip().strip('"').strip("'")
+    return 'default'
+
+def load_layout(name='default'):
+    layout_path = os.path.join(SITE_DIR, '_layouts', f'{name}.html')
     with open(layout_path, encoding='utf-8') as f:
         return f.read()
 
 def build_page(md_path):
     with open(md_path, encoding='utf-8') as f:
         raw = f.read()
+    layout_name = get_layout_name(raw)
     content_html = render_markdown(raw)
-    layout = load_layout()
+    layout = load_layout(layout_name)
 
     # Liquid タグを置換
     html = layout.replace('{{ content }}', content_html)
@@ -55,6 +65,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         # index.md → レンダリング
         if path in ('/', '/index.html', ''):
             md_path = os.path.join(SITE_DIR, 'index.md')
+        elif path in ('/keynote', '/keynote/', '/keynote/index.html', '/keynote.html'):
+            md_path = os.path.join(SITE_DIR, 'keynote.md')
+        else:
+            md_path = None
+
+        if md_path and os.path.exists(md_path):
             html = build_page(md_path)
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')

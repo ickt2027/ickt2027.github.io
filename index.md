@@ -12,6 +12,22 @@ title: "ICKT 2027"
 | **住所** | 〒656-2306　兵庫県淡路市夢舞台2番地 |
 | **主催** | ICKT2027実行委員会 |
 
+## 基調講演者 {#keynote}
+
+<div class="speaker-card">
+  <img src="/assets/images/keynote_speaker.jpg" alt="基調講演者 写真" class="speaker-photo">
+  <div class="speaker-info">
+    <div class="speaker-role">KEYNOTE SPEAKER</div>
+    <div class="speaker-name">田中 克己 氏</div>
+    <div class="speaker-affiliation">
+      ・京都大学 名誉教授<br>
+      ・関西学院大学 客員研究員
+    </div>
+    <div class="speaker-topic">講演題目：「未定」</div>
+    <a href="/keynote/" class="speaker-more">詳細・ギャラリーを見る →</a>
+  </div>
+</div>
+
 ## プログラム {#program}
 
 準備中です。
