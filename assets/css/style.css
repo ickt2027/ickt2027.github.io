@@ -598,6 +598,19 @@ body.menu-open { overflow: hidden; }
   line-height: 1.95;
 }
 
+/* 略歴 */
+.editorial-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.editorial-bio p {
+  font-size: 0.98rem;
+  line-height: 1.95;
+  color: var(--text-dark);
+  margin: 0;
+}
+
 /* スナップショット（セクション間の上品な写真列） */
 .editorial-snapshots {
   display: flex;
