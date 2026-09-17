@@ -51,14 +51,14 @@
   <section class="hero" id="top">
     <div class="hero-slides">
       <div class="hero-slide slide-1"></div>
-      <div class="hero-slide slide-2"></div>
-      <div class="hero-slide slide-3"></div>
-      <div class="hero-slide slide-4"></div>
-      <div class="hero-slide slide-5"></div>
-      <div class="hero-slide slide-6"></div>
-      <div class="hero-slide slide-7"></div>
-      <div class="hero-slide slide-8"></div>
-      <div class="hero-slide slide-9"></div>
+      <div class="hero-slide slide-2" data-bg="/assets/images/hero_02_terrace_day.jpg"></div>
+      <div class="hero-slide slide-3" data-bg="/assets/images/hero_04_hyakudan_spring.jpg"></div>
+      <div class="hero-slide slide-4" data-bg="/assets/images/hero_05_osaka_bay.jpg"></div>
+      <div class="hero-slide slide-5" data-bg="/assets/images/hero_06_yama_corridor.jpg"></div>
+      <div class="hero-slide slide-6" data-bg="/assets/images/hero_19_ellipse_forum.jpg"></div>
+      <div class="hero-slide slide-7" data-bg="/assets/images/image7.jpg"></div>
+      <div class="hero-slide slide-8" data-bg="/assets/images/image8.jpg"></div>
+      <div class="hero-slide slide-9" data-bg="/assets/images/image9.jpg"></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -128,6 +128,20 @@
         if (target) {
           e.preventDefault();
           window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ヒーロー背景画像の遅延読み込み（1枚目を最優先表示し、2枚目以降をバックグラウンドでロード）
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero-slide[data-bg]').forEach(slide => {
+        const bgUrl = slide.getAttribute('data-bg');
+        if (bgUrl) {
+          const img = new Image();
+          img.onload = () => {
+            slide.style.backgroundImage = `url('${bgUrl}')`;
+          };
+          img.src = bgUrl;
         }
       });
     });

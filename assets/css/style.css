@@ -190,24 +190,23 @@ body.menu-open { overflow: hidden; }
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: slideShow 36s infinite;
+  animation: slideShow 54s infinite;
 }
 .slide-1 { background-image: url('/assets/images/hero_01_zenkei.jpg');          animation-delay: 0s; }
-.slide-2 { background-image: url('/assets/images/hero_02_terrace_day.jpg');     animation-delay: 6s; }
-.slide-3 { background-image: url('/assets/images/hero_04_hyakudan_spring.jpg'); animation-delay: 12s; }
-.slide-4 { background-image: url('/assets/images/hero_05_osaka_bay.jpg');       animation-delay: 18s; }
-.slide-5 { background-image: url('/assets/images/hero_06_yama_corridor.jpg');   animation-delay: 24s; }
-.slide-6 { background-image: url('/assets/images/hero_19_ellipse_forum.jpg');   animation-delay: 30s; }
-.slide-7 { background-image: url('/assets/images/image7.jpg');   animation-delay: 36s; }
-.slide-8 { background-image: url('/assets/images/image8.jpg');   animation-delay: 42s; }
-.slide-9 { background-image: url('/assets/images/image9.jpg');   animation-delay: 48s; }
-
+.slide-2 { animation-delay: 6s; }
+.slide-3 { animation-delay: 12s; }
+.slide-4 { animation-delay: 18s; }
+.slide-5 { animation-delay: 24s; }
+.slide-6 { animation-delay: 30s; }
+.slide-7 { animation-delay: 36s; }
+.slide-8 { animation-delay: 42s; }
+.slide-9 { animation-delay: 48s; }
 
 @keyframes slideShow {
   0%   { opacity: 0; transform: scale(1.03); }
-  5%   { opacity: 1; }
-  27%  { opacity: 1; transform: scale(1.06); }
-  33%  { opacity: 0; transform: scale(1.06); }
+  3%   { opacity: 1; }
+  14%  { opacity: 1; transform: scale(1.06); }
+  18%  { opacity: 0; transform: scale(1.06); }
   100% { opacity: 0; }
 }
 
