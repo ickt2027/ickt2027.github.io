@@ -68,6 +68,26 @@
     </div>
   </footer>
 
+  <!-- 画像拡大モーダル（前へ・次へスライダー付き） -->
+  <div id="photoModal" class="photo-modal" role="dialog" aria-modal="true" aria-label="画像拡大プレビュー">
+    <div class="modal-backdrop" onclick="closePhotoModal()"></div>
+    <div class="modal-content-wrap">
+      <button class="modal-btn modal-prev" onclick="navigatePhoto(-1)" aria-label="前の写真">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="modal-img-box">
+        <img id="modalImg" src="" alt="拡大写真">
+        <div id="modalCounter" class="modal-counter"></div>
+      </div>
+      <button class="modal-btn modal-next" onclick="navigatePhoto(1)" aria-label="次の写真">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <button class="modal-btn modal-close" onclick="closePhotoModal()" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
   <script>
     // ハンバーガーメニュー
     const hamburger = document.getElementById('hamburger');
@@ -82,6 +102,66 @@
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
         document.body.classList.remove('menu-open');
+      });
+    });
+
+    // 写真スライダー＆モーダル（拡大表示機能）
+    let currentPhotoList = [];
+    let currentPhotoIdx = 0;
+
+    function getVisiblePhotos() {
+      // ページ内のクリック可能な写真を自動収集（今後写真が増えても自動対応）
+      return Array.from(document.querySelectorAll('.keynote-editorial img')).filter(img => {
+        return img.offsetParent !== null && img.id !== 'modalImg';
+      });
+    }
+
+    function openPhotoModal(targetImg) {
+      currentPhotoList = getVisiblePhotos();
+      currentPhotoIdx = currentPhotoList.indexOf(targetImg);
+      if (currentPhotoIdx === -1) currentPhotoIdx = 0;
+      updateModalImage();
+      document.getElementById('photoModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+
+    function updateModalImage() {
+      if (currentPhotoList.length === 0) return;
+      const target = currentPhotoList[currentPhotoIdx];
+      const modalImg = document.getElementById('modalImg');
+      modalImg.src = target.src;
+      modalImg.alt = target.alt || '写真';
+      
+      const counter = document.getElementById('modalCounter');
+      counter.textContent = `${currentPhotoIdx + 1} / ${currentPhotoList.length}`;
+    }
+
+    function navigatePhoto(direction) {
+      if (currentPhotoList.length <= 1) return;
+      currentPhotoIdx = (currentPhotoIdx + direction + currentPhotoList.length) % currentPhotoList.length;
+      updateModalImage();
+    }
+
+    function closePhotoModal() {
+      document.getElementById('photoModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+
+    // キーボード操作（← / → で移動、Esc で閉じる）
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('photoModal');
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') navigatePhoto(-1);
+      if (e.key === 'ArrowRight') navigatePhoto(1);
+      if (e.key === 'Escape') closePhotoModal();
+    });
+
+    // ページロード時にすべての写真にクリックイベントを付与
+    document.addEventListener('DOMContentLoaded', () => {
+      const imgs = document.querySelectorAll('.keynote-editorial img');
+      imgs.forEach(img => {
+        img.classList.add('zoomable-img');
+        img.addEventListener('click', () => openPhotoModal(img));
       });
     });
   </script>
