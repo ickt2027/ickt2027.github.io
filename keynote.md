@@ -46,10 +46,10 @@ permalink: /keynote/
   <!-- スナップ・フォトストリップ -->
   <div class="editorial-snapshots">
     <figure class="snap-item">
-      <img src="/assets/images/keynote/photo2.jpg" alt="スナップ1" onerror="this.closest('.snap-item').style.display='none'">
+      <img src="/assets/images/keynote/photo1.jpg" alt="スナップ1" onerror="this.closest('.snap-item').style.display='none'">
     </figure>
     <figure class="snap-item">
-      <img src="/assets/images/keynote/photo3.jpg" alt="スナップ2" onerror="this.closest('.snap-item').style.display='none'">
+      <img src="/assets/images/keynote/photo2.jpg" alt="スナップ2" onerror="this.closest('.snap-item').style.display='none'">
     </figure>
     <figure class="snap-item">
       <img src="/assets/images/keynote/photo4.jpg" alt="スナップ3" onerror="this.closest('.snap-item').style.display='none'">
