@@ -17,11 +17,11 @@ permalink: /keynote/
   <div class="editorial-profile">
     <div class="profile-photo-column">
       <figure class="editorial-fig">
-        <img src="/assets/images/keynote_speaker.jpg" alt="田中 克己 氏" class="fig-main">
+        <img src="/assets/images/keynote_speaker.jpg" alt="田中 克己 先生" class="fig-main">
       </figure>
     </div>
     <div class="profile-text-column">
-      <h2 class="editorial-speaker-name">田中 克己 <small>氏</small></h2>
+      <h2 class="editorial-speaker-name">田中 克己 <small>先生</small></h2>
       <div class="editorial-speaker-affil">
         <p>京都大学 名誉教授</p>
         <p>関西学院大学 客員研究員</p>
@@ -51,12 +51,12 @@ permalink: /keynote/
     <figure class="snap-item">
       <img src="/assets/images/keynote/photo2.jpg" alt="スナップ2" onerror="this.closest('.snap-item').style.display='none'">
     </figure>
-    <figure class="snap-item">
+    <!-- <figure class="snap-item">
       <img src="/assets/images/keynote/photo4.jpg" alt="スナップ3" onerror="this.closest('.snap-item').style.display='none'">
     </figure>
     <figure class="snap-item">
       <img src="/assets/images/keynote/photo5.jpg" alt="スナップ4" onerror="this.closest('.snap-item').style.display='none'">
-    </figure>
+    </figure> -->
   </div>
 
   <!-- 略歴 -->

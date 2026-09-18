@@ -98,6 +98,29 @@
     </div>
   </footer>
 
+  <!-- 画像拡大モーダル（前へ・次へスライダー付き） -->
+  <div id="photoModal" class="photo-modal" role="dialog" aria-modal="true" aria-label="画像拡大プレビュー">
+    <div class="modal-backdrop" onclick="closePhotoModal()"></div>
+    <div class="modal-content-wrap">
+      <button class="modal-btn modal-prev" onclick="navigatePhoto(-1)" aria-label="前の写真">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="modal-img-box">
+        <img id="modalImg" src="" alt="拡大写真">
+        <div class="modal-caption-area">
+          <p id="modalCaption" class="modal-caption"></p>
+          <div id="modalCounter" class="modal-counter"></div>
+        </div>
+      </div>
+      <button class="modal-btn modal-next" onclick="navigatePhoto(1)" aria-label="次の写真">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <button class="modal-btn modal-close" onclick="closePhotoModal()" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
   <script>
     // ヘッダー: スクロールで背景切り替え
     const header = document.getElementById('site-header');
@@ -143,6 +166,72 @@
           };
           img.src = bgUrl;
         }
+      });
+    });
+
+    // 過去の開催画像モーダル＆スライダー
+    let currentPhotoItems = [];
+    let currentPhotoIdx = 0;
+
+    function openPhotoModal(targetSrc) {
+      // 過去の開催写真の全リストを順番に収集（src と data-caption / alt を保持）
+      const imgElements = Array.from(document.querySelectorAll('.past-card-img-wrap img'));
+      currentPhotoItems = imgElements.map(img => ({
+        src: img.src,
+        caption: img.getAttribute('data-caption') || img.alt || ''
+      }));
+
+      currentPhotoIdx = currentPhotoItems.findIndex(item => item.src === targetSrc);
+      if (currentPhotoIdx === -1) currentPhotoIdx = 0;
+      updateModalImage();
+      document.getElementById('photoModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+
+    function updateModalImage() {
+      if (currentPhotoItems.length === 0) return;
+      const item = currentPhotoItems[currentPhotoIdx];
+      const modalImg = document.getElementById('modalImg');
+      modalImg.src = item.src;
+      modalImg.alt = item.caption;
+
+      const captionEl = document.getElementById('modalCaption');
+      captionEl.textContent = item.caption;
+
+      const counter = document.getElementById('modalCounter');
+      counter.textContent = `${currentPhotoIdx + 1} / ${currentPhotoItems.length}`;
+    }
+
+    function navigatePhoto(direction) {
+      if (currentPhotoItems.length <= 1) return;
+      currentPhotoIdx = (currentPhotoIdx + direction + currentPhotoItems.length) % currentPhotoItems.length;
+      updateModalImage();
+    }
+
+    function closePhotoModal() {
+      document.getElementById('photoModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+
+    // キーボード操作（← / → で移動、Esc で閉じる）
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('photoModal');
+      if (!modal || !modal.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') navigatePhoto(-1);
+      if (e.key === 'ArrowRight') navigatePhoto(1);
+      if (e.key === 'Escape') closePhotoModal();
+    });
+
+    // 過去の開催カードの写真クリックでモーダル起動
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.past-card-img-wrap').forEach(wrap => {
+        wrap.classList.add('zoomable-img');
+        wrap.addEventListener('click', () => {
+          const firstImg = wrap.querySelector('img');
+          if (firstImg) {
+            openPhotoModal(firstImg.src);
+          }
+        });
       });
     });
   </script>

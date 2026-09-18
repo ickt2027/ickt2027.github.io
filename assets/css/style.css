@@ -1,20 +1,20 @@
 /* ============================================================
    ICKT 2027 — スタイルシート
-   カラーパレット: 淡路島の海（青 × 白）
+   カラーパレット: 喜寿の紫（高貴な紫 × 淡藤 × 白）
    ============================================================ */
 
 /* ---------- CSS変数 ---------- */
 :root {
-  --ocean-deep:  #0a2540;
-  --ocean-mid:   #1a4a7a;
-  --ocean-light: #4a90b8;
-  --ocean-pale:  #b8d4e8;
-  --sky:         #e8f2f8;
+  --ocean-deep:  #1f1235;   /* 深紫（ナイトパープル） */
+  --ocean-mid:   #542a78;   /* 喜寿の雅な紫（ロイヤルパープル） */
+  --ocean-light: #7b4397;   /* 明るい紫（アメジスト・藤紫） */
+  --ocean-pale:  #cbb4de;   /* 淡藤色（ペールラベンダー） */
+  --sky:         #f3eef8;   /* 極淡い藤色（背景アクセント） */
   --white:       #ffffff;
-  --text-dark:   #1a2a3a;
-  --text-mid:    #4a6a8a;
-  --text-light:  #8aa8c0;
-  --border:      rgba(74, 144, 184, 0.25);
+  --text-dark:   #231c2b;   /* わずかに紫がかった墨黒 */
+  --text-mid:    #5e526a;   /* 落ち着いた紫灰 */
+  --text-light:  #9587a3;   /* 薄い紫灰 */
+  --border:      rgba(123, 67, 151, 0.22);
 
   --font-serif-ja: 'Noto Serif JP', serif;
   --font-sans-ja:  'Noto Sans JP', sans-serif;
@@ -179,7 +179,7 @@ body.menu-open { overflow: hidden; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--ocean-deep) 0%, #0d3460 30%, #16537e 60%, #1a6a9a 80%, #4a90b8 100%);
+  background: #0f1115;
 }
 
 /* スライドショー */
@@ -214,7 +214,13 @@ body.menu-open { overflow: hidden; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(10,37,64,0.4) 0%, rgba(10,37,64,0.2) 50%, rgba(10,37,64,0.65) 100%);
+  /* 写真本来の鮮やかさを活かしつつ文字を読ませるニュートラル黒グラデーション */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.12) 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
 }
 
 .hero-content {
@@ -281,7 +287,7 @@ body.menu-open { overflow: hidden; }
   padding: 0.6rem 1.6rem;
   border: 1.5px solid rgba(255,255,255,0.5);
   border-radius: 30px;
-  background: rgba(10, 37, 64, 0.3);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(6px);
   letter-spacing: 0.04em;
 }
@@ -472,6 +478,80 @@ body.menu-open { overflow: hidden; }
   transform: translateX(3px);
 }
 
+/* 過去の開催（アーカイブカード） */
+.past-events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.8rem;
+  margin-top: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+.past-card {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(31, 18, 53, 0.06);
+  border: 1px solid var(--sky);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.past-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(84, 42, 120, 0.14);
+}
+.past-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--sky);
+}
+.past-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.past-card:hover .past-card-img-wrap img {
+  transform: scale(1.05);
+}
+.past-card-body {
+  padding: 1.2rem 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.past-year {
+  font-family: var(--font-en);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ocean-light);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+  display: inline-block;
+}
+.past-title {
+  font-family: var(--font-sans-ja);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ocean-deep);
+  margin-bottom: 0.4rem;
+}
+.past-title a {
+  color: var(--ocean-deep);
+  border-bottom: none;
+}
+.past-title a:hover {
+  color: var(--ocean-mid);
+}
+.past-desc {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+
 @media (max-width: 600px) {
   .speaker-card { flex-direction: column; text-align: center; gap: 1.2rem; }
 }
@@ -566,7 +646,7 @@ body.menu-open { overflow: hidden; }
 
 /* 講演題目ハイライトボックス */
 .editorial-quote-box {
-  background: #f4f8fb;
+  background: var(--sky);
   border-left: 3px solid var(--ocean-mid);
   padding: 1.25rem 1.5rem;
   border-radius: 0 6px 6px 0;
@@ -698,12 +778,23 @@ body.modal-open {
   background: rgba(255, 255, 255, 0.03);
   user-select: none;
 }
-.modal-counter {
+.modal-caption-area {
   margin-top: 0.9rem;
+  text-align: center;
+}
+.modal-caption {
+  font-family: var(--font-sans-ja);
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+.modal-counter {
   font-family: var(--font-en);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* モーダルボタン（前へ・次へ・閉じる） */
