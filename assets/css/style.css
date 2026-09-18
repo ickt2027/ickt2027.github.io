@@ -704,7 +704,8 @@ body.menu-open { overflow: hidden; }
   max-width: 260px;
   margin: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .snap-item img {
   width: 100%;
@@ -712,13 +713,21 @@ body.menu-open { overflow: hidden; }
   max-height: 180px;
   object-fit: contain;
   background: #f8fafc;
-  border-radius: 4px;
-  box-shadow: 0 4px 14px rgba(10, 37, 64, 0.06);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(10, 37, 64, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .snap-item:hover img {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.12);
+  box-shadow: 0 8px 24px rgba(84, 42, 120, 0.16);
+}
+.snap-caption {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 /* クリック可能な写真（カーソル表示） */

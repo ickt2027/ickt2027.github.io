@@ -74,11 +74,32 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             html = build_page(md_path)
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.send_header('Pragma', 'no-cache')
+            self.send_header('Expires', '0')
             self.end_headers()
             self.wfile.write(html.encode('utf-8'))
         else:
             # 静的ファイル（CSS, 画像等）
             super().do_GET()
+
+    def do_HEAD(self):
+        path = self.path.split('?')[0]
+        if path in ('/', '/index.html', '') or path in ('/keynote', '/keynote/', '/keynote/index.html', '/keynote.html'):
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.send_header('Pragma', 'no-cache')
+            self.send_header('Expires', '0')
+            self.end_headers()
+        else:
+            super().do_HEAD()
+
+    def end_headers(self):
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
+        super().end_headers()
 
     def log_message(self, format, *args):
         print(f"  {self.address_string()} - {format % args}")
@@ -92,5 +113,6 @@ print(f"  URL  -> http://localhost:{PORT}")
 print(f"  Stop -> Ctrl+C")
 print()
 
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
+socketserver.ThreadingTCPServer.allow_reuse_address = True
+with socketserver.ThreadingTCPServer(("", PORT), Handler) as httpd:
     httpd.serve_forever()

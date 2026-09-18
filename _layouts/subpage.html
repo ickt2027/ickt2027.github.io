@@ -77,7 +77,10 @@
       </button>
       <div class="modal-img-box">
         <img id="modalImg" src="" alt="拡大写真">
-        <div id="modalCounter" class="modal-counter"></div>
+        <div class="modal-caption-area">
+          <p id="modalCaption" class="modal-caption"></p>
+          <div id="modalCounter" class="modal-counter"></div>
+        </div>
       </div>
       <button class="modal-btn modal-next" onclick="navigatePhoto(1)" aria-label="次の写真">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
@@ -106,19 +109,23 @@
     });
 
     // 写真スライダー＆モーダル（拡大表示機能）
-    let currentPhotoList = [];
+    let currentPhotoItems = [];
     let currentPhotoIdx = 0;
 
     function getVisiblePhotos() {
-      // ページ内のクリック可能な写真を自動収集（今後写真が増えても自動対応）
       return Array.from(document.querySelectorAll('.keynote-editorial img')).filter(img => {
         return img.offsetParent !== null && img.id !== 'modalImg';
       });
     }
 
     function openPhotoModal(targetImg) {
-      currentPhotoList = getVisiblePhotos();
-      currentPhotoIdx = currentPhotoList.indexOf(targetImg);
+      const visibleImgs = getVisiblePhotos();
+      currentPhotoItems = visibleImgs.map(img => ({
+        src: img.src,
+        caption: img.getAttribute('data-caption') || img.alt || ''
+      }));
+
+      currentPhotoIdx = visibleImgs.indexOf(targetImg);
       if (currentPhotoIdx === -1) currentPhotoIdx = 0;
       updateModalImage();
       document.getElementById('photoModal').classList.add('active');
@@ -126,19 +133,22 @@
     }
 
     function updateModalImage() {
-      if (currentPhotoList.length === 0) return;
-      const target = currentPhotoList[currentPhotoIdx];
+      if (currentPhotoItems.length === 0) return;
+      const item = currentPhotoItems[currentPhotoIdx];
       const modalImg = document.getElementById('modalImg');
-      modalImg.src = target.src;
-      modalImg.alt = target.alt || '写真';
+      modalImg.src = item.src;
+      modalImg.alt = item.caption;
       
+      const captionEl = document.getElementById('modalCaption');
+      captionEl.textContent = item.caption;
+
       const counter = document.getElementById('modalCounter');
-      counter.textContent = `${currentPhotoIdx + 1} / ${currentPhotoList.length}`;
+      counter.textContent = `${currentPhotoIdx + 1} / ${currentPhotoItems.length}`;
     }
 
     function navigatePhoto(direction) {
-      if (currentPhotoList.length <= 1) return;
-      currentPhotoIdx = (currentPhotoIdx + direction + currentPhotoList.length) % currentPhotoList.length;
+      if (currentPhotoItems.length <= 1) return;
+      currentPhotoIdx = (currentPhotoIdx + direction + currentPhotoItems.length) % currentPhotoItems.length;
       updateModalImage();
     }
 

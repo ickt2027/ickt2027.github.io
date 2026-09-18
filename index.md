@@ -5,8 +5,9 @@ title: "ICKT 2027"
 
 ## 実施概要 {#about}
 
-| | |
+| 項目 | 内容 |
 |---|---|
+| **シンポジウム名** | 第3回 情報・通信・知識技術シンポジウム<br>The 3rd Symposium on Information, Communication, and Knowledge Technologies (ICKT 2027) |
 | **日程** | 2027年2月21日（日）〜 22日（月） |
 | **会場** | [淡路夢舞台](https://www.yumebutai.co.jp) 会議室 301 |
 | **住所** | 〒656-2306　兵庫県淡路市夢舞台2番地 |
@@ -18,7 +19,7 @@ title: "ICKT 2027"
   <img src="/assets/images/keynote_speaker.jpg" alt="基調講演者 写真" class="speaker-photo">
   <div class="speaker-info">
     <div class="speaker-role">KEYNOTE SPEAKER</div>
-    <div class="speaker-name">田中 克己 先生</div>
+    <div class="speaker-name">田中 克己 氏</div>
     <div class="speaker-affiliation">
       ・京都大学 名誉教授<br>
       ・関西学院大学 客員研究員
@@ -58,7 +59,7 @@ title: "ICKT 2027"
 <div class="past-events-grid">
   <div class="past-card">
     <div class="past-card-img-wrap">
-      <img src="/assets/images/past/ICKT2024.jpeg" alt="ICKT 2024" onerror="this.closest('.past-card-img-wrap').style.display='none'">
+      <img src="/assets/images/past_placeholder.svg?v=2" alt="ICKT 2024 写真準備中" data-caption="ICKT 2024（第2回 情報・通信・知識技術シンポジウム）- 写真準備中">
     </div>
     <div class="past-card-body">
       <span class="past-year">2024</span>
@@ -68,27 +69,24 @@ title: "ICKT 2027"
   </div>
 
   <div class="past-card">
-    <div class="past-card-img-wrap" data-extra-photo="/assets/images/past/ICKT2017_photo2.JPG">
-      <img src="/assets/images/past/ICKT2017_photo1.JPG" alt="ICKT 2017 (1)" onerror="this.closest('.past-card-img-wrap').style.display='none'">
-      <img src="/assets/images/past/ICKT2017_photo2.JPG" alt="ICKT 2017 (2)" style="display:none;" onerror="this.remove()">
-      <span class="past-photo-badge">📷 2枚の写真</span>
+    <div class="past-card-img-wrap">
+      <img src="/assets/images/past_placeholder.svg?v=2" alt="ICKT 2017 写真準備中" data-caption="ICKT 2017（第1回 情報・通信・知識技術シンポジウム 2017）- 写真準備中">
     </div>
     <div class="past-card-body">
       <span class="past-year">2017</span>
       <h3 class="past-title">ICKT 2017</h3>
-      <p class="past-desc">情報・通信・知識技術シンポジウム 2017</p>
+      <p class="past-desc">第1回 情報・通信・知識技術シンポジウム 2017</p>
     </div>
   </div>
 
   <div class="past-card">
     <div class="past-card-img-wrap">
-      <img src="/assets/images/past/ICKT2011.jpg" alt="ICKT 2011" onerror="this.closest('.past-card-img-wrap').style.display='none'">
+      <img src="/assets/images/past_placeholder.svg?v=2" alt="ICKT 2011 写真準備中" data-caption="ICKT 2011（第0回 情報・通信・知識技術シンポジウム）- 写真準備中">
     </div>
     <div class="past-card-body">
       <span class="past-year">2011</span>
       <h3 class="past-title">ICKT 2011</h3>
-      <p class="past-desc">第1回 情報・通信・知識技術シンポジウム</p>
+      <p class="past-desc">第0回 情報・通信・知識技術シンポジウム</p>
     </div>
   </div>
 </div>
-

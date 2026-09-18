@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <!-- 背景：清潔感のある白 -->
+  <rect width="800" height="500" fill="#ffffff"/>
+  <!-- 繊細なボーダー枠 -->
+  <rect x="16" y="16" width="768" height="468" fill="none" stroke="#e6e0ee" stroke-width="2" stroke-dasharray="8,6" rx="6"/>
+  <!-- 中央アイコン（カメラ・フォト） -->
+  <g transform="translate(365, 185)" opacity="0.45">
+    <path d="M12 25 C12 21, 15 18, 19 18 L25 18 L29 12 L41 12 L45 18 L51 18 C55 18, 58 21, 58 25 L58 49 C58 53, 55 56, 51 56 L19 56 C15 56, 12 53, 12 49 Z" fill="none" stroke="#542a78" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="35" cy="37" r="11" fill="none" stroke="#542a78" stroke-width="2.5"/>
+  </g>
+  <!-- テキスト -->
+  <text x="400" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#7b4397" opacity="0.7" text-anchor="middle" letter-spacing="0.18em">PHOTO COMING SOON</text>
+  <text x="400" y="302" font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif" font-size="13" fill="#9587a3" text-anchor="middle" letter-spacing="0.08em">写真準備中</text>
+</svg>

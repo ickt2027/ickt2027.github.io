@@ -10,14 +10,15 @@ permalink: /keynote/
   <div class="editorial-header">
     <div class="editorial-badge">KEYNOTE LECTURE</div>
     <h1 class="editorial-title">基調講演</h1>
-    <!-- <p class="editorial-lead">なんか必要ならここに〇〇な田中克己先生にご講演いただきます、みたいなのが入ってもいいと思って</p> -->
   </div>
 
   <!-- 講演者プロフィール -->
   <div class="editorial-profile">
     <div class="profile-photo-column">
       <figure class="editorial-fig">
-        <img src="/assets/images/keynote_speaker.jpg" alt="田中 克己 先生" class="fig-main">
+        <img src="/assets/images/keynote_speaker.jpg" alt="田中 克己 先生" 
+        data-caption="田中 克己 先生（京都大学 名誉教授 / 関西学院大学 客員研究員）" 
+        class="fig-main">
       </figure>
     </div>
     <div class="profile-text-column">
@@ -43,21 +44,27 @@ permalink: /keynote/
     </div>
   </section>
 
-  <!-- スナップ・フォトストリップ -->
-  <div class="editorial-snapshots">
-    <figure class="snap-item">
-      <img src="/assets/images/keynote/photo1.jpg" alt="スナップ1" onerror="this.closest('.snap-item').style.display='none'">
-    </figure>
-    <figure class="snap-item">
-      <img src="/assets/images/keynote/photo2.jpg" alt="スナップ2" onerror="this.closest('.snap-item').style.display='none'">
-    </figure>
-    <!-- <figure class="snap-item">
-      <img src="/assets/images/keynote/photo4.jpg" alt="スナップ3" onerror="this.closest('.snap-item').style.display='none'">
-    </figure>
-    <figure class="snap-item">
-      <img src="/assets/images/keynote/photo5.jpg" alt="スナップ4" onerror="this.closest('.snap-item').style.display='none'">
-    </figure> -->
-  </div>
+  <!-- 田中克己先生 スナップギャラリー（元々の写真3枚） -->
+  <section class="editorial-section">
+    <!-- <h2 id="speaker-gallery">田中 克己 先生</h2> -->
+    <div class="editorial-snapshots">
+      <figure class="snap-item">
+        <img src="/assets/images/keynote/photo1.jpg"
+        onerror="this.closest('.snap-item').style.display='none'">
+        <!-- <figcaption class="snap-caption">スナップ写真 1</figcaption> -->
+      </figure>
+      <figure class="snap-item">
+        <img src="/assets/images/keynote/photo2.jpg"
+        onerror="this.closest('.snap-item').style.display='none'">
+        <!-- <figcaption class="snap-caption">スナップ写真 2</figcaption> -->
+      </figure>
+      <figure class="snap-item">
+        <img src="/assets/images/keynote/photo3.jpg"
+        onerror="this.closest('.snap-item').style.display='none'">
+        <!-- <figcaption class="snap-caption">スナップ写真 3</figcaption> -->
+      </figure>
+    </div>
+  </section>
 
   <!-- 略歴 -->
   <section class="editorial-section">
@@ -72,6 +79,28 @@ permalink: /keynote/
       <p>
         情報処理学会フェロー。情報処理学会理事、データベースシステム研究会主査、論文誌「データベース」共同編集委員長、日本データベース学会副会長、ACM Transactions on Database Systems Area Editorなどを歴任。
       </p>
+    </div>
+  </section>
+
+  <section class="editorial-section">
+    <h2 id="past-symposiums">ICKTでの歩み</h2>
+    <div class="editorial-snapshots">
+      <figure class="snap-item">
+        <img src="/assets/images/past/ICKT2024.jpeg" alt="ICKT 2024（第2回 情報・通信・知識技術シンポジウム）" data-caption="ICKT 2024（第2回 情報・通信・知識技術シンポジウム）" onerror="this.closest('.snap-item').style.display='none'">
+        <figcaption class="snap-caption">ICKT 2024</figcaption>
+      </figure>
+      <figure class="snap-item">
+        <img src="/assets/images/past/ICKT2017_photo1.JPG" alt="ICKT 2017（第1回 情報・通信・知識技術シンポジウム 2017）_2" data-caption="ICKT 2017（第1回 情報・通信・知識技術シンポジウム 2017）_2" onerror="this.closest('.snap-item').style.display='none'">
+        <figcaption class="snap-caption">ICKT 2017</figcaption>
+      </figure>
+      <figure class="snap-item">
+        <img src="/assets/images/past/ICKT2017_photo2.JPG" alt="ICKT 2017（第1回 情報・通信・知識技術シンポジウム 2017）_1" data-caption="ICKT 2017（第1回 情報・通信・知識技術シンポジウム 2017）_1" onerror="this.closest('.snap-item').style.display='none'">
+        <figcaption class="snap-caption">ICKT 2017</figcaption>
+      </figure>
+      <figure class="snap-item">
+        <img src="/assets/images/past/ICKT2011.jpg" alt="ICKT 2011（第0回 情報・通信・知識技術シンポジウム）" data-caption="ICKT 2011（第0回 情報・通信・知識技術シンポジウム）" onerror="this.closest('.snap-item').style.display='none'">
+        <figcaption class="snap-caption">ICKT 2011</figcaption>
+      </figure>
     </div>
   </section>
 
